@@ -75,7 +75,7 @@ endPrompt = endPrompt.join(' ').trim();
 if (startPrompt.length === 0) throw new Error('start prompt (before `--`) cannot be empty');
 if (endPrompt.length === 0) throw new Error('end prompt (after `--`) cannot be empty');
 
-const randInt = () => Math.floor(Math.random() * 9999999999);
+const randInt = () => Math.floor(Math.random() * 999999);
 const parseInt10 = n => parseInt(n, 10);
 function parseRangeWithDefaults(arg, parseFn, def) {
 	const matches = args[arg].match(/^(\+\d+)|(?:(\?|\d+)(?:-(\?|\d+))?)$/);
