@@ -78,11 +78,13 @@ if (endPrompt.length === 0) throw new Error('end prompt (after `--`) cannot be e
 const randInt = () => Math.floor(Math.random() * 9999999999);
 const parseInt10 = n => parseInt(n, 10);
 function parseRangeWithDefaults(arg, parseFn, def) {
-	const matches = args[arg].match(/^(\?|\d+)(?:-(\?|\d+))?$/);
+	const matches = args[arg].match(/^(\+\d+)|(?:(\?|\d+)(?:-(\?|\d+))?)$/);
 	if (!matches) throw new Error(`invalid ${arg} range: ${args[arg]}`);
-	return [
-		matches[1] === '?' ? def : parseFn(matches[1]),
-		(matches[2] ?? '?') === '?' ? def : parseFn(matches[2])
+	return matches[1] 
+	? [ def, def + parseFn(matches[1]) ]
+	: [
+		matches[2] === '?' ? def : parseFn(matches[2]),
+		(matches[3] ?? '?') === '?' ? def : parseFn(matches[3])
 	];
 }
 
