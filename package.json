@@ -1,0 +1,15 @@
+{
+  "name": "riffusion-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "riffusion": "./cli.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "arg": "^5.0.2"
+  }
+}
