@@ -193,6 +193,7 @@ for (let alpha = 0; alpha <= 1.0; alpha += alphaStep) {
 			process.exit(1);
 		}
 
+		const latency = data?.data?.latency_ms || 'unknown';
 		const modelOutput = data?.data?.worklet_output?.model_output;
 
 		if (!modelOutput) {
@@ -228,7 +229,7 @@ for (let alpha = 0; alpha <= 1.0; alpha += alphaStep) {
 		const mp364 = matches[1];
 		const mp3 = Buffer.from(mp364, 'base64');
 
-		const pathname = path.join(basePath, `${alpha.toFixed(10)}.mp3`);
+		const pathname = path.join(basePath, `${alpha.toFixed(10)}-l${latency}.mp3`);
 
 		await fsp.writeFile(pathname, mp3);
 		allSamples.push(pathname);
